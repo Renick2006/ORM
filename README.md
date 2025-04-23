@@ -1,12 +1,12 @@
 # Ex02 Django ORM Web Application
-## Date: 09/04/2025
+## Date: 24/04/2025
 
 ## AIM
 To develop a Django application to store and retrieve data from Movies Database using Object Relational Mapping(ORM).
 
 ## ENTITY RELATIONSHIP DIAGRAM
 
-![alt text](<Screenshot 2025-04-09 230259.png>)
+![Screenshot 2025-04-23 234140](https://github.com/user-attachments/assets/c1b880a8-dfd6-498b-97c6-fc8a0c798676)
 
 
 ## DESIGN STEPS
@@ -28,30 +28,36 @@ Execute Django admin and create details for 10 books
 admin.py
 
 from django.contrib import admin
-from .models import Employee,EmployeeAdmin
-admin.site.register(Employee,EmployeeAdmin)
+from .models import Movie, MovieAdmin
+admin.site.register(Movie, MovieAdmin)
 
 models.py
 
 from django.db import models
 from django.contrib import admin
-class Employee (models.Model):
-    eid=models.IntegerField(primary_key=True)
-    name=models.CharField(max_length=100)
-    salary=models.IntegerField()
-    age=models.IntegerField()
-    email=models.EmailField()
- 
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('eid','name','salary','age','email')
 
+class Movie(models.Model):
+    movie_id = models.CharField(max_length=10, help_text="Movie ID")
+    title = models.CharField(max_length=200)
+    genre = models.CharField(max_length=100)
+    release_year = models.IntegerField()
+    rating = models.FloatField()
+    
+    def __str__(self):
+        return self.title
+
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ('movie_id', 'title', 'genre', 'release_year', 'rating')
 
 ```
 
 
 ## OUTPUT
 
-![alt text](<Screenshot 2025-04-09 224036.png>)
+
+![Screenshot 2025-04-23 182604](https://github.com/user-attachments/assets/857a1f16-782e-4e60-8efa-538467f82bd7)
+
+
 
 
 ## RESULT
