@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib import admin
-class Employee (models.Model):
-    eid=models.IntegerField(primary_key=True)
-    name=models.CharField(max_length=100)
-    salary=models.IntegerField()
-    age=models.IntegerField()
-    email=models.EmailField()
- 
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('eid','name','salary','age','email')
+
+class Movie(models.Model):
+    movie_id = models.CharField(max_length=10, help_text="Movie ID")
+    title = models.CharField(max_length=200)
+    genre = models.CharField(max_length=100)
+    release_year = models.IntegerField()
+    rating = models.FloatField()
+    
+    def __str__(self):
+        return self.title
+
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ('movie_id', 'title', 'genre', 'release_year', 'rating')
